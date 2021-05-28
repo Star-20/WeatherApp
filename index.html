@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather Application</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="main_content">
+        <h1>Weather Information</h1>
+
+        <div class="content">
+          <div class="image"></div>
+
+          <div class="search">
+            <input
+              type="text"
+              class="inp"
+              id="city"
+              placeholder="Anaheim ( Default )"
+            />
+            <button class="btn" onclick="getWeatherInfo()">
+              Get Weather Report
+            </button>
+          </div>
+
+          <div class="details" id="report"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // initial call
+      getWeatherInfo();
+
+      function getWeatherInfo() {
+        let city = "Anaheim";
+        // expected output is true
+        if (document.getElementById("city").value !== "") {
+          city = document.getElementById("city").value;
+        }
+
+        let apikey = "0fffc0c2890024a14ddd3fe936a17baf";
+        fetch(
+          // "http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}"
+          `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey}`
+        )
+          .then((response) => response.json()) //convert data to json
+          .then((data) => {
+            console.log(data);
+            //At temperatures near 0 K (−273.15 °C; −459.67 °F)
+            // To convert a kelvin temperature figure to Celsius, (0K-273.15)
+            // To convert a kelvin temperature figure to Fahrenheit , (0K − 273.15) × 9/5 + 32)
+            let report = `
+            
+                     <p>Temperature : ${(data.main.temp - 273.15).toFixed(
+                       2
+                     )} &deg;C / ${(
+              (data.main.temp - 273.15) * 0.36 +
+              32
+            ).toFixed(2)}&deg;F</p>
+                     
+
+                    <p>Temperature Feels Like : ${(
+                      data.main.feels_like - 273.15
+                    ).toFixed(2)} &deg;C</p>
+                    
+                    <p>Humidity : ${data.main.humidity}%</p>
+                    
+                    <p>Wind Speed : ${data.wind.speed}Km/h</p>
+                    
+                     <p>Weather : ${data.weather[0].main} (${
+              data.weather[0].description
+            })</p>
+             `;
+
+            document.getElementById("report").innerHTML = report;
+          })
+          .catch((err) => {
+            console.log(err);
+            document.getElementById("report").innerHTML = "City Not Found";
+          });
+      }
+    </script>
+  </body>
+</html>

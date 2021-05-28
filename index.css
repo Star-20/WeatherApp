@@ -1,0 +1,100 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+h1 {
+  font-size: 30px;
+  color: #2275c5;
+  text-align: center;
+  margin: 10px;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: lightgray;
+  min-height: 100vh;
+}
+
+.main {
+  height: 600px;
+  width: 30%;
+  background-color: white;
+  box-shadow: 0 0 10px gray;
+  border-radius: 10px;
+  overflow: hidden;
+  border-style: solid;
+  border-color: darkorange;
+}
+
+.main_content {
+  height: 100%;
+  /* background-color: green; */
+  padding: 20px 20px 0px 20px;
+  font-family: "Segoe UI";
+  display: flex;
+  flex-direction: column;
+  /* justify-content: space-evenly; */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* background:red; */
+  justify-content: center;
+}
+
+.image {
+  height: 250px;
+  /* background-image: url("./images/banner.jpg"); */
+  background-image: url("./images/Weather.jpg");
+  border-radius: 10px;
+}
+
+.search {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+  justify-content: space-evenly;
+}
+
+.inp {
+  height: 40px;
+  width: 100%;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid lightgray;
+  text-indent: 20px;
+  color: dodgerblue;
+}
+
+.btn {
+  padding: 10px 20px 10px 20px;
+  border-radius: 10px;
+  outline: none;
+  border: 1px solid gray;
+  align-self: baseline;
+  background-color: #3584cf;
+  color: white;
+  cursor: pointer;
+}
+
+.btn:active {
+  background-color: #2275c5;
+}
+
+.details {
+  /* background-color: red;  */
+  font-family: "Times New Roman", Times, serif;
+  font-size: 18px;
+  color: darkgoldenrod;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.details > p {
+  padding: 5px 0 5px 0;
+}
